@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Console Tricks!</title>
+  </head>
+  <body>
+    <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+    <script>
+      const dogs = [
+        { name: "Snickers", age: 2 },
+        { name: "hugo", age: 8 },
+      ];
+
+      function makeGreen() {
+        const p = document.querySelector("p");
+        p.style.color = "#BADA55";
+        p.style.fontSize = "50px";
+      }
+
+      // Regular
+      console.log("test");
+
+      // Interpolated
+      console.log("test as a %s string", "new");
+      console.log(`test as a ${variable} string`);
+
+      // Styled
+      console.log(
+        "%c testing style in this text",
+        "font-size: 50px; background:red"
+      );
+
+      // warning!
+      console.warn("be careful");
+
+      // Error :|
+      console.error("error alert");
+
+      // Info
+      console.info("it shows info on the console");
+
+      // Testing
+      const p = document.querySelector("p");
+
+      console.assert(p.classList.contains("z"), "That is wrong!");
+
+      // clearing
+      console.clear();
+
+      // Viewing DOM Elements
+      console.log(p);
+      console.dir(p); // this one
+
+      // Grouping together
+      console.log(
+        dogs.forEach((dog) => {
+          console.group(`${dog.name}`);
+          console.log(`This is ${dog.name}`);
+          console.log(`${dog.name} is ${dog.age} years old`);
+          console.groupEnd(`${dog.name}`); // same string
+        })
+      );
+
+      // counting
+      console.count("wes");
+      console.count("wes");
+      console.count("wes");
+      console.count("wes");
+
+      // timing
+      console.time("fetching data");
+      fetch("https://api.github.com/users/wesbos")
+        .then((data) => data.json())
+        .then((data) => {
+          console.timeEnd("fetching data"); //same string
+          console.log(data);
+        });
+
+      // table
+      console.table(dogs);
+    </script>
+  </body>
+</html>
